@@ -8,8 +8,10 @@ import "./utils/flexble";
 import "./static/fonts/iconfont.css"
 import store from "./store";
 import ElementUI from "element-ui";
+import plugs from "./plugins/"
 
-Vue.use(ElementUI)
+Vue.use(ElementUI);
+Vue.use(plugs)
 
 Vue.config.productionTip = false
 

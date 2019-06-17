@@ -72,11 +72,6 @@
             <button @click="$router.back()">取消</button>
             <button class="active" @click="submitBtn">提交</button>
         </footer>
-        <transition name="mask">
-            <div class="mask" v-if="flag">
-                {{msg}}
-            </div>
-        </transition>
     </div>
 </template>
 <script>
@@ -117,8 +112,6 @@ export default {
                 }
             ],
             types:"",
-            flag:false,
-            msg:""
         }
     },
     computed: {
@@ -157,19 +150,15 @@ export default {
             }).then(res=>{
                 console.log(res);
                 if(res.data.msg == "提交成功"){
-                    this.flag = true;
+                    this.$alert("提交成功")
                     this.msg="提交成功";
                     setTimeout(()=>{
-                        this.flag = false;
                         this.$router.push("/home");
                     },2000)
                     
                 }else{
-                    this.flag = true;
+                    this.$alert("提交失败，请重新填写")
                     this.msg="提交失败，请重新填写";
-                    setTimeout(()=>{
-                        this.flag = false;
-                    },2000)
                 }
             })
         }
@@ -381,21 +370,7 @@ export default {
         }
     }
 }
-.mask-enter,
-.mask-leave-to {
-    opacity: 0;
-}
 
-.mask-enter-to,
-.mask-leave {
-    opacity: 1;
-}
-.mask-enter-active {
-    transition: opacity 1s ease;
-}
-.mask-leave-active {
-    transition: opacity 1s ease;
-}
 
 
 </style>

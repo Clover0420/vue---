@@ -4,18 +4,17 @@
             <i class="iconfont icon-arrow-left" @click="$router.back()"></i>
             <p>筛选</p>
         </div>
-        <choose-list v-for="(item,index) in list" 
+        <ChooseList v-for="(item,index) in list" 
         :key="index" 
         :title="item.title"
         :child="item.child"
-        ></choose-list>
+        ></ChooseList>
     </div>
 </template>
 <script>
-import chooseList from "../../components/chooseList";
 export default {
     components:{
-        chooseList
+        
     },
     data(){
         return {
